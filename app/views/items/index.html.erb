@@ -1,6 +1,6 @@
 <h1>Woop!</h1>
 
-<% @items.each do |item| %>
-  <h2><%= link_to (item.id).to_s + (". ") + (item.title), item %></h2>
+<% @items.each_with_index do |item, i| %>
+  <h2><%= link_to (i+1).to_s + (". ") + (item.title), item %></h2>
   <p><%= item.description %></p>
 <% end %>

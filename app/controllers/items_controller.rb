@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :complete]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :complete, :uncomplete]
 
   def index
       @items = Item.where(user_id: current_user.id).order("created_at DESC")
@@ -39,6 +39,11 @@ class ItemsController < ApplicationController
 
   def complete
     @item.update_attribute(:completed_at, Time.now)
+    redirect_to root_path
+  end
+
+  def uncomplete
+    @item.update_attribute(:completed_at, nil)
     redirect_to root_path
   end
   private

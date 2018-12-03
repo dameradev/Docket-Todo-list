@@ -8,8 +8,8 @@
 				<div class="row item">
 
 					<div class="col-md-2">
-						<p><%= link_to complete_item_path(item), method: :patch do %></p>
-							<i class="fa fa-check fa-lg"></i>
+						<p><%= link_to uncomplete_item_path(item), method: :patch do %></p>
+							<%= fa_icon "check-square-o"%>
 						<% end %>
 					</div>
 
@@ -34,7 +34,7 @@
 
 					<div class="col-md-2">
 						<p><%= link_to complete_item_path(item), method: :patch do %></p>
-							<i class="fa fa-check fa-lg"></i>
+							<%= fa_icon "square-o"%>
 						<% end %>
 					</div>
 

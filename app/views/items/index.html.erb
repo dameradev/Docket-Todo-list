@@ -3,14 +3,12 @@
 	<% @items.each do |item| %>
 		<div class="index-wrapper">
 
-			<% if item.completed? %>
+			<% if item.complete? %>
 <!-- For Completed Items-->
 				<div class="row item">
 
 					<div class="col-md-2">
-						<p><%= link_to uncomplete_item_path(item), method: :patch do %></p>
-							<%= fa_icon "check-square-o"%>
-						<% end %>
+						<p><%= link_to fa_icon("check-square-o"), toggle_status_item_path(item) %></p>
 					</div>
 
 					<div class="col-md-2">
@@ -22,7 +20,7 @@
 					<div class="col-md-8">
 						<h2 style="opacity: 0.5;" class="item-title"><strike><%= link_to item.title, item %></strike></h2>
 						<p style="opacity: 0.5;" class="item-sub-title item-desc"><%= item.description %></p>
-						<p style="opacity: 0.5;" class="time-created-at item-sub-title">Completed <%= time_ago_in_words(item.completed_at) %> ago</p>
+						<p style="opacity: 0.5;" class="time-created-at item-sub-title">Completed <%= time_ago_in_words(item.completed_at) if (item.completed_at)%> ago</p>
 					</div>
 
 				</div>
@@ -33,9 +31,7 @@
 				<div class="row item">
 
 					<div class="col-md-2">
-						<p><%= link_to complete_item_path(item), method: :patch do %></p>
-							<%= fa_icon "square-o"%>
-						<% end %>
+						<p><%= link_to fa_icon("square-o"), toggle_status_item_path(item) %></p>
 					</div>
 
 					<div class="col-md-8">
